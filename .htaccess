@@ -1,0 +1,15 @@
+Options -Indexes
+RewriteEngine On
+
+# Block direct access to config
+<Files "config.php">
+    Require all denied
+</Files>
+
+# Redirect bare domain to index.php
+RewriteRule ^$ /index.php [L]
+
+# Pretty URLs (optional, future use)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ /$1.php [L]
